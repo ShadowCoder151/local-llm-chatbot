@@ -23,5 +23,6 @@ As a part of learning LLMs in my LLM journey, a "HELLO WORLD" project, a minimal
 ```bash
 git clone https://github.com/ShadowCoder151/local-llm-chatbot
 cd local-llm-chatbot
+```
 
 ### 2. Setup virtual environment
