@@ -26,3 +26,32 @@ cd local-llm-chatbot
 ```
 
 ### 2. Setup virtual environment
+```bash
+python -m venv .venv
+source .venv/bin/activate   # or .\.venv\Scripts\activate on Windows
+pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+### 3. Download the model
+Model download link: https://huggingface.co/TheBloke/Mistral-7B-Instruct-v0.2-GGUF
+
+Place it in models folder
+```bash
+models/Mistral-7B-Instruct-v0.2.Q4_K_M.gguf
+```
+
+### 4. Run the chatbot:
+```bash
+python src/chatbot.py
+```
+
+---
+
+## Sample Output
+```cmd
+Enter the question:What is a neutron?
+Answer: Neutrons are subatomic particles that have no charge and are identical to each other in terms of mass, which is approximately 1.67 x 10^-24 grams. Neutrons are fundamental constituents of the nucleus of an atom, along with protons. The number of neutrons in the nucleus of an atom determines the isotope of the element. For example, an atom of carbon-12 has 6 neutrons, while an atom of carbon-13 has 7. Neutrons are stable in the nucleus of most light and medium-mass elements, but they can be unstable in heavier nuclei and undergo a process called beta decay, transforming into a proton, an electron, and an antineutrino.
+```
+
+Note: You can customize the system prompt (What role should the chatbot play? in the code)
