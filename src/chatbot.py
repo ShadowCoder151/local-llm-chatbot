@@ -6,18 +6,30 @@ llm = Llama(model_path="models\\mistral-7b-instruct-v0.2.Q4_K_M.gguf",
             n_gpu_layers=-1,
             verbose=False)
 
-system_prompt = "Act as a helpful and concise professor who is an expert in Physics."
+system_prompt = "Act as a helpful companion."
 
-# One time q/a
+chat_history = []
 
-user_input = input("Enter the question:")
+# Loop based CLI
+while True:
+    user_input = input("Enter the question:")
+    if user_input.lower() == "exit":
+        print("Exiting chat")
+        exit(0)
 
-prompt = f"""
-<s>[INST]<<SYS>>{system_prompt}<</SYS>> {user_input} [/INST]
-"""
+    chat_history.append({"role" : "user", "content" : user_input})
 
-response = llm(prompt, max_tokens=256)
+    prompt = f"""
+    <s>[INST]<<SYS>>{system_prompt}<</SYS>> {user_input} [/INST]
+    """
 
-output = response["choices"][0]["text"].strip()
+    for turn in chat_history:
+        prompt += f"{turn['content']}\n[/INST]"
 
-print(f"Answer: {output}")
+    response = llm(prompt, max_tokens=256)
+    output = response["choices"][0]["text"].strip()
+
+    chat_history.append({"role" : "assistant", "content" : output})
+
+    print(f"Answer: {output}")
+    print('-' * 40)
