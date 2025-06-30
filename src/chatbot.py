@@ -6,7 +6,7 @@ llm = Llama(model_path="models\\mistral-7b-instruct-v0.2.Q4_K_M.gguf",
             n_gpu_layers=-1,
             verbose=False)
 
-system_prompt = "Act as a helpful companion."
+system_prompt = "Act as a helpful companion who answers any doubts only 60 words."
 
 chat_history = []
 
@@ -26,7 +26,7 @@ while True:
     for turn in chat_history:
         prompt += f"{turn['content']}\n[/INST]"
 
-    response = llm(prompt, max_tokens=256)
+    response = llm(prompt, max_tokens=10000)
     output = response["choices"][0]["text"].strip()
 
     chat_history.append({"role" : "assistant", "content" : output})

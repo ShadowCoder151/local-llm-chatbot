@@ -1,15 +1,14 @@
-from langchain.memory import ConversationBufferMemory
-from langchain.schema.messages import SystemMessage
+from langchain_core.runnables.history import RunnableWithMessageHistory
+from langchain_core.chat_history import InMemoryChatMessageHistory
 
 from src.prompts import SYSTEM_PROMPT
 
-def MemoryInit():
-    memory = ConversationBufferMemory(
-        memory_key="history",
-        input_key="user_input",
-        return_messages=True
-    )
+def MemoryInit(chain):
+    final_chain = RunnableWithMessageHistory(chain,
+    lambda session_id: InMemoryChatMessageHistory(),
+    input_messages_key="user_input",
+    history_messages_key="history")
 
-    memory.chat_memory.add_message(SystemMessage(SYSTEM_PROMPT))
+    # memory.chat_memory.add_message(SystemMessage(content=SYSTEM_PROMPT))
 
-    return memory
+    return final_chain
