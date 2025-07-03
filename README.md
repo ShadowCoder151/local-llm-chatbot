@@ -1,6 +1,6 @@
 # local-llm-chatbot
 
-As a part of learning LLMs in my LLM journey, a "HELLO WORLD" project, a minimal, open-source chatbot using [Mistral-7B-Instruct](https://huggingface.co/TheBloke/Mistral-7B-Instruct-v0.2-GGUF)
+As a part of learning LLMs in my LLM journey, a "HELLO WORLD" project, a minimal, open-source chatbot using [Mistral-7B-Instruct v0.2 GGUF](https://huggingface.co/TheBloke/Mistral-7B-Instruct-v0.2-GGUF)
 
 ---
 
@@ -9,10 +9,11 @@ As a part of learning LLMs in my LLM journey, a "HELLO WORLD" project, a minimal
 | Layer      | Model      |
 |---------------|--------------|
 | LLM inference        | llama-cpp-python       |
-| Model        | [Mistral-7B-Instruct](https://huggingface.co/TheBloke/Mistral-7B-Instruct-v0.2-GGUF)       |
+| LLM orchestration        | LangChain       |
+| Model        | [Mistral-7B-Instruct v0.2 GGUF](https://huggingface.co/TheBloke/Mistral-7B-Instruct-v0.2-GGUF)       |
 | Environment        | `venv`, Python 3.12+       |
 | Interface        | CLI (interactive prompt)       |
-| Platform       | CPU (Expanded to GPU later)       |
+| Platform       | CPU + GPU switch      |
 
 ---
 
@@ -43,7 +44,7 @@ models/Mistral-7B-Instruct-v0.2.Q4_K_M.gguf
 
 ### 4. Run the chatbot:
 ```bash
-python src/chatbot.py
+python app.py
 ```
 
 ---
@@ -54,4 +55,4 @@ Enter the question:What is a neutron?
 Answer: Neutrons are subatomic particles that have no charge and are identical to each other in terms of mass, which is approximately 1.67 x 10^-24 grams. Neutrons are fundamental constituents of the nucleus of an atom, along with protons. The number of neutrons in the nucleus of an atom determines the isotope of the element. For example, an atom of carbon-12 has 6 neutrons, while an atom of carbon-13 has 7. Neutrons are stable in the nucleus of most light and medium-mass elements, but they can be unstable in heavier nuclei and undergo a process called beta decay, transforming into a proton, an electron, and an antineutrino.
 ```
 
-Note: You can customize the system prompt (What role should the chatbot play? in the code)
+Note: You can customize the system prompt in prompts.py (What role should the chatbot play? in the code)
