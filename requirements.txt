@@ -1,3 +1,6 @@
 llama-cpp-python
 langchain
 langchain-community
+PyQt6
+fastapi
+uvicorn[standard]
